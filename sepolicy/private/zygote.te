@@ -4,3 +4,5 @@
 #
 
 # Play Integrity hooks are set up in the zygote, ahead of any app
+
+allow zygote proc_pid_max:file r_file_perms;
