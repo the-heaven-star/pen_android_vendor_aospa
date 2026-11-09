@@ -5,6 +5,8 @@
 
 ifeq (aospa_fogos,$(TARGET_PRODUCT))
 
+TARGET_BOARD_PLATFORM := blair
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
