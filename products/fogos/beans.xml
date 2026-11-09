@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Paranoid Android
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest>
+  <project path="device/motorola/fogos" name="Motorola-Sedona61/android_device_motorola_fogos" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="device/motorola/sm6375-common" name="Motorola-Sedona61/android_device_motorola_sm6375-common" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="device/motorola/fogos-kernel" name="Motorola-Sedona61/android_device_motorola_fogos-kernel" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+
+  <project path="vendor/motorola/fogos" name="Motorola-Sedona61/proprietary_vendor_motorola_fogos" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="vendor/motorola/sm6375-common" name="Motorola-Sedona61/proprietary_vendor_motorola_sm6375-common" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+
+  <project path="hardware/motorola" name="LineageOS/android_hardware_motorola" remote="github" revision="50e65e5fd3ede70dd6417a9dbfe0ce5d798c626e" />
+  <project path="hardware/samsung_slsi/nfc" name="LineageOS/android_hardware_samsung_slsi_nfc" remote="github" revision="88490b4408246e6c10ef1a6942844796f66dee5e" />
+
+  <remove-project name="platform/vendor/qcom-opensource/healthd-ext" />
+  <project path="vendor/qcom/opensource/healthd-ext" name="Motorola-Sedona61/android_vendor_qcom_opensource_healthd-ext" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+
+  <project path="hardware/qcom-caf/bootctrl" name="Motorola-Sedona61/android_hardware_qcom_bootctrl" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/common" name="Motorola-Sedona61/android_hardware_qcom_common" remote="github" revision="refs/heads/lineage-24.0-6.1">
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm6375-6.1/Android.bp" />
+  </project>
+
+  <project path="hardware/qcom-caf/fogos-legacy-audio" name="Motorola-Sedona61/android_hardware_qcom_audio" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/audio/primary-hal" name="Motorola-Sedona61/android_hardware_qcom_audio_ar" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/audio/pal" name="Motorola-Sedona61/android_vendor_qcom_opensource_arpal_lx" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/audio/agm" name="Motorola-Sedona61/android_vendor_qcom_opensource_agm" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/audio/graphservices" name="Motorola-Sedona61/android_vendor_qcom_opensource_audioreach_graphservices" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/display" name="Motorola-Sedona61/android_hardware_qcom_display" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/data-ipa-cfg-mgr" name="Motorola-Sedona61/android_vendor_qcom_opensource_data_ipa_cfg_mgr" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+  <project path="hardware/qcom-caf/sm6375-6.1/dataipa" name="Motorola-Sedona61/android_vendor_qcom_opensource_dataipa" remote="github" revision="refs/heads/lineage-24.0-6.1" />
+</manifest>
