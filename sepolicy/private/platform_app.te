@@ -16,3 +16,6 @@ allow platform_app power_insight_service:service_manager find;
 
 # Luminous
 set_prop(platform_app, penguin_luminous_prop)
+
+# Allow platform apps to read bluetooth LE audio properties
+get_prop(platform_app, bluetooth_lea_prop)
