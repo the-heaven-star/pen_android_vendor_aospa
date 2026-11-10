@@ -277,24 +277,34 @@ elif [ "${KEY_MAPPINGS}" ]; then
         fi
     done
 
-    echo -e "${CLR_BLD_BLU}Signing target files apks${CLR_RST}"
     TARGET_FILES="$OUT"/obj/PACKAGING/target_files_intermediates/aospa_$DEVICE-target_files.zip
+    SIGNED_TARGET_FILES="$AOSPA_VERSION-$DEVICE-signed-target_files.zip"
 
-    # APEXes name their own keys on the command line; the list is built from the package
-    # being signed so it follows the APEXes the build actually produced.
-    if [ -f "$DIR_ROOT"/vendor/aospa/build/tools/gen_sign_args.py ]; then
-        EXTRA_SIGN_ARGS+=" $(python3 "$DIR_ROOT"/vendor/aospa/build/tools/gen_sign_args.py \
-            "$TARGET_FILES" "$KEY_MAPPINGS")"
-        checkExit
+    if [ ! -f "$SIGNED_TARGET_FILES" ] && [ -f "aospa-$AOSPA_VERSION-signed-target_files.zip" ]; then
+        SIGNED_TARGET_FILES="aospa-$AOSPA_VERSION-signed-target_files.zip"
     fi
 
-    sign_target_files_apks -o -d $KEY_MAPPINGS \
-        $EXTRA_SIGN_ARGS \
-        "$TARGET_FILES" \
-        $AOSPA_VERSION-$DEVICE-signed-target_files.zip
-    ln -sf $AOSPA_VERSION-$DEVICE-signed-target_files.zip aospa-$AOSPA_VERSION-signed-target_files.zip
+    if [ ! -f "$SIGNED_TARGET_FILES" ] || [ "$TARGET_FILES" -nt "$SIGNED_TARGET_FILES" ]; then
+        echo -e "${CLR_BLD_BLU}Signing target files apks${CLR_RST}"
 
-    checkExit
+        # APEXes name their own keys on the command line; the list is built from the package
+        # being signed so it follows the APEXes the build actually produced.
+        if [ -f "$DIR_ROOT"/vendor/aospa/build/tools/gen_sign_args.py ]; then
+            EXTRA_SIGN_ARGS+=" $(python3 "$DIR_ROOT"/vendor/aospa/build/tools/gen_sign_args.py \
+                "$TARGET_FILES" "$KEY_MAPPINGS")"
+            checkExit
+        fi
+
+        sign_target_files_apks -o -d $KEY_MAPPINGS \
+            $EXTRA_SIGN_ARGS \
+            "$TARGET_FILES" \
+            $AOSPA_VERSION-$DEVICE-signed-target_files.zip
+
+        checkExit
+        ln -sf $AOSPA_VERSION-$DEVICE-signed-target_files.zip aospa-$AOSPA_VERSION-signed-target_files.zip
+    else
+        echo -e "${CLR_BLD_BLU}Using existing signed target files: aospa-$AOSPA_VERSION-signed-target_files.zip${CLR_RST}"
+    fi
 
     echo -e "${CLR_BLD_BLU}Generating signed install package${CLR_RST}"
     ota_from_target_files -k $KEY_MAPPINGS/releasekey \
