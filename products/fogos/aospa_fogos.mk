@@ -15,6 +15,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Inherit from the custom device configuration.
 $(call inherit-product, device/motorola/fogos/device.mk)
 
+# Enable blur support (PenguinOS Liquid Glass and window-level blurs)
+TARGET_USES_BLUR := true
+
 # Inherit from the AOSPA configuration.
 $(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
 

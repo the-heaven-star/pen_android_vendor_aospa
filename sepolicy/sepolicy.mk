@@ -10,4 +10,5 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
     vendor/aospa/sepolicy/public
 
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    vendor/aospa/sepolicy/vendor
+    vendor/aospa/sepolicy/vendor \
+    vendor/aospa/sepolicy/qcom/dynamic

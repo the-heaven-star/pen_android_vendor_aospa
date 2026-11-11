@@ -314,8 +314,8 @@ elif [ "${KEY_MAPPINGS}" ]; then
 
     checkExit
 
-    cp -f aospa-$AOSPA_VERSION.zip "$OUT"/aospa-$AOSPA_VERSION.zip
-    echo "Package Complete: $OUT/aospa-$AOSPA_VERSION.zip"
+    cp -f $AOSPA_VERSION-$DEVICE.zip "$OUT"/$AOSPA_VERSION-$DEVICE.zip
+    echo "Package Complete: $OUT/$AOSPA_VERSION-$DEVICE.zip"
 
     if [ "$DELTA_TARGET_FILES" ]; then
         # die if base target doesn't exist
@@ -336,6 +336,7 @@ elif [ "${KEY_MAPPINGS}" ]; then
             $AOSPA_VERSION-$DEVICE-signed-target_files.zip \
             $AOSPA_VERSION-$DEVICE-image.zip
         checkExit
+        cp -f $AOSPA_VERSION-$DEVICE-image.zip "$OUT"/$AOSPA_VERSION-$DEVICE-image.zip
     fi
 # Build rom package
 elif [ "$FLAG_IMG_ZIP" = 'y' ]; then

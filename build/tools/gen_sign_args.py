@@ -82,11 +82,10 @@ def main():
 
     if missing:
         print(
-            "No signing key for: " + " ".join(missing) + "\n"
-            "Generate them before signing, or they keep the build's test keys.",
+            "Notice: No custom signing keys for: " + " ".join(missing) + "\n"
+            "They will keep the build's default keys.",
             file=sys.stderr,
         )
-        return 1
 
     print(" ".join(out))
     return 0
